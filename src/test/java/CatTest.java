@@ -29,10 +29,10 @@ public class CatTest {
     @Test
     public void testGetFood() throws Exception {
 
-        when(felineMock.eatMeat()).thenReturn(Arrays.asList("Животные", "Птицы"));
-
+        List<String> expectedFood = Arrays.asList("Животные", "Птицы");
+        when(felineMock.eatMeat()).thenReturn(expectedFood);
         List<String> food = cat.getFood();
-        assertEquals(Arrays.asList("Животные", "Птицы"), food);
+        assertEquals(expectedFood, food);
     }
 
     @Test
@@ -45,13 +45,5 @@ public class CatTest {
         });
 
         assertEquals("Ошибка получения еды", exception.getMessage());
-    }
-
-    @Test
-    public void testGetFamilyFromFeline() throws Exception {
-
-        when(felineMock.getFamily()).thenReturn("Кошачьи");
-
-        assertEquals("Кошачьи", felineMock.getFamily());
     }
 }

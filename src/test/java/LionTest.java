@@ -29,8 +29,10 @@ public class LionTest {
 
     @Test
     public void testGetFood() throws Exception {
+        List<String> expectedFood = Arrays.asList("Животные", "Птицы");
+        when(felineMock.getFood("Хищник")).thenReturn(expectedFood);
         List<String> food = lionMale.getFood();
-        assertEquals(Arrays.asList("Животные", "Птицы"), food);
+        assertEquals(expectedFood, food);
     }
 
     @Test(expected = Exception.class)
